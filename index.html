@@ -74,9 +74,33 @@
 
 
     <script>
+        // Disable Right-Click (Context Menu)
         document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
+          e.preventDefault();
         });
-    </script>    
+      
+        // Disable common View Source shortcuts
+        document.addEventListener('keydown', function(e) {
+          // Disable F12 (Developer Tools)
+          if (e.key === "F12") {
+            e.preventDefault();
+          }
+      
+          // Disable Ctrl+Shift+I (Developer Tools)
+          if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+            e.preventDefault();
+          }
+      
+          // Disable Ctrl+U (View Source)
+          if (e.ctrlKey && e.key === 'u') {
+            e.preventDefault();
+          }
+      
+          // Disable Ctrl+Shift+C or Ctrl+Shift+J (Inspect Element)
+          if ((e.ctrlKey && e.shiftKey && e.key === 'C') || (e.ctrlKey && e.shiftKey && e.key === 'J')) {
+            e.preventDefault();
+          }
+        });
+      </script>
 </body>
 </html>
